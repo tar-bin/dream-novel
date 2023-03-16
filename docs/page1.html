@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <title>夢小説変換サンプル</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="mb-3">
+          <label for="outputTextarea" class="form-label">最終出力</label>
+          <textarea class="form-control" id="outputTextarea" rows="50">
+■名前呼びテスト
+「こんにちは、{{myojiKanji}}{{namaeKanji}}」
+「こんにちは、{{myojiHiragana}}{{namaeHiragana}}」
+「こんにちは、{{myojiKatakana}}{{namaeKatakana}}」
+■どもりテスト
+「{{myojiHiragana.substring(0,1)}}、{{myojiKanji}}」
+「{{namaeHiragana.substring(0,1)}}、{{namaeKanji}}」
+「{{myojiHiragana.substring(0,1)}}、{{myojiHiragana}}」
+「{{namaeHiragana.substring(0,1)}}、{{namaeHiragana}}」
+「{{myojiKatakana.substring(0,1)}}、{{myojiKatakana}}」
+「{{namaeKatakana.substring(0,1)}}、{{namaeKatakana}}」
+          </textarea>
+      </div>
+    </div>
+
+    <script src="../dream-novel.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

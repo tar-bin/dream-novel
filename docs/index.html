@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
     <title>夢小説変換サンプル</title>
   </head>
@@ -18,165 +18,64 @@
       <div class="row align-items-start">
         <div class="col">
             <label for="inputText1" class="form-label">名字</label>
-            <input class="form-control" id="inputText1" rows="3" v-model="inputMyojiKanji"></textarea>
+            <input class="form-control" id="inputText1" rows="3" v-model="myojiKanji"></textarea>
         </div>
         <div class="col">
             <label for="inputText2" class="form-label">みょうじ</label>
-            <input class="form-control" id="inputText2" rows="3" v-model="inputMyojiHiragana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText3" class="form-label">ミョウジ</label>
-            <input class="form-control" id="inputText3" rows="3" v-model="inputMyojiKatakana"></textarea>
+            <input class="form-control" id="inputText2" rows="3" v-model="myojiHiragana"></textarea>
         </div>
       </div>
       <div class="row align-items-start">
         <div class="col">
             <label for="inputText4" class="form-label">名前</label>
-            <input class="form-control" id="inputText4" rows="3" v-model="inputNamaeKanji"></textarea>
+            <input class="form-control" id="inputText4" rows="3" v-model="namaeKanji"></textarea>
         </div>
         <div class="col">
             <label for="inputText5" class="form-label">なまえ</label>
-            <input class="form-control" id="inputText5" rows="3" v-model="inputNamaeHiragana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText6" class="form-label">ナマエ</label>
-            <input class="form-control" id="inputText6" rows="3" v-model="inputNamaeKatakana"></textarea>
+            <input class="form-control" id="inputText5" rows="3" v-model="namaeHiragana"></textarea>
         </div>
       </div>
       <div class="row align-items-start">
-        <div class="col">
-            <label for="inputText7" class="form-label">置き換え：名字</label>
-            <input class="form-control" id="inputText7" rows="3" v-model="replaceMyojiKanji"></textarea>
+        <div class="row">
+            <label class="form-label">※データはブラウザのローカルストレージに保存されます。サーバーには送信されません。</label>
         </div>
-        <div class="col">
-            <label for="inputText8" class="form-label">置き換え：みょうじ</label>
-            <input class="form-control" id="inputText8" rows="3" v-model="replaceMyojiHiragana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText9" class="form-label">置き換え：ミョウジ</label>
-            <input class="form-control" id="inputText9" rows="3" v-model="replaceMyojiKatakana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText10" class="form-label">置き換え：どもりみょうじ</label>
-            <input class="form-control" id="inputText10" rows="3" v-model="replaceDomoriMyojiHiragana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText11" class="form-label">置き換え：どもりミョウジ</label>
-            <input class="form-control" id="inputText11" rows="3" v-model="replaceDomoriMyojiKatakana"></textarea>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" type="button" @click="saveConfig">保存</button>
+            <button class="btn btn-outline-secondary" type="button" @click="resetConfig">リセット</button>
+          </div>
         </div>
       </div>
       <div class="row align-items-start">
-        <div class="col">
-            <label for="inputText12" class="form-label">置き換え：名前</label>
-            <input class="form-control" id="inputText12" rows="3" v-model="replaceNamaeKanji"></textarea>
+        <div class="row">
+            <label class="form-label">ページ遷移テスト用</label>
         </div>
-        <div class="col">
-            <label for="inputText13" class="form-label">置き換え：なまえ</label>
-            <input class="form-control" id="inputText13" rows="3" v-model="replaceNamaeHiragana"></textarea>
+        <div class="row">
+          <a href="page1.html">ページ1(ページ内遷移)</a>
         </div>
-        <div class="col">
-            <label for="inputText14" class="form-label">置き換え：ナマエ</label>
-            <input class="form-control" id="inputText14" rows="3" v-model="replaceNamaeKatakana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText15" class="form-label">置き換え：どもりなまえ</label>
-            <input class="form-control" id="inputText15" rows="3" v-model="replaceDomoriNamaeHiragana"></textarea>
-        </div>
-        <div class="col">
-            <label for="inputText16" class="form-label">置き換え：どもりナマエ</label>
-            <input class="form-control" id="inputText16" rows="3" v-model="replaceDomoriNamaeKatakana"></textarea>
+        <div class="row">
+          <a href="page1.html" target="_blank">ページ1(新規タブ)</a>
         </div>
       </div>
-        <div class="mb-3">
-            <label for="inputMainText" class="form-label">本文テンプレート</label>
-            <textarea class="form-control" id="inputMainText" rows="10" v-model="inputMainText"></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="outputTextarea" class="form-label">最終出力</label>
-            <textarea class="form-control" id="outputTextarea" rows="50" v-model="outputMainText"></textarea>
-        </div>
+      <div class="mb-3">
+          <label for="outputTextarea" class="form-label">設定プレビュー</label>
+          <textarea class="form-control" id="outputTextarea" rows="12">
+■名前呼びテスト
+「こんにちは、{{myojiKanji}}{{namaeKanji}}」
+「こんにちは、{{myojiHiragana}}{{namaeHiragana}}」
+「こんにちは、{{myojiKatakana}}{{namaeKatakana}}」
+■どもりテスト
+「{{myojiHiragana.substring(0,1)}}、{{myojiKanji}}」
+「{{namaeHiragana.substring(0,1)}}、{{namaeKanji}}」
+「{{myojiHiragana.substring(0,1)}}、{{myojiHiragana}}」
+「{{namaeHiragana.substring(0,1)}}、{{namaeHiragana}}」
+「{{myojiKatakana.substring(0,1)}}、{{myojiKatakana}}」
+「{{namaeKatakana.substring(0,1)}}、{{namaeKatakana}}」
+          </textarea>
+      </div>
     </div>
 
-    <script>
-        const { createApp } = Vue
-        const defaultInputMainText = ''
-          + '■名前呼びテスト\n\n'
-          + '「こんにちは、漢字名字漢字名前」\n'
-          + '「こんにちは、ひらがな名字ひらがな名前」\n'
-          + '「こんにちは、カタカナ名字カタカナ名前」\n'
-          + '■どもりテスト\n'
-          + '「どもりひらがな名字、漢字名字」\n'
-          + '「どもりひらがな名前、漢字名前」\n'
-          + '「どもりひらがな名字、ひらがな名字」\n'
-          + '「どもりひらがな名前、ひらがな名前」\n'
-          + '「どもりカタカナ名字、カタカナ名字」\n'
-          + '「どもりカタカナ名前、カタカナ名前」\n';
-      
-        createApp({
-          data() {
-            return {
-              replaceMyojiKanji: '漢字名字',
-              replaceNamaeKanji: '漢字名前',
-              replaceMyojiHiragana: 'ひらがな名字',
-              replaceNamaeHiragana: 'ひらがな名前',
-              replaceMyojiKatakana: 'カタカナ名字',
-              replaceNamaeKatakana: 'カタカナ名前',
-              replaceDomoriMyojiHiragana: 'どもりひらがな名字',
-              replaceDomoriNamaeHiragana: 'どもりひらがな名前',
-              replaceDomoriMyojiKatakana: 'どもりカタカナ名字',
-              replaceDomoriNamaeKatakana: 'どもりカタカナ名前',
-              inputMyojiKanji: 'デフォルト漢字名字',
-              inputNamaeKanji: 'デフォルト漢字名前',
-              inputMyojiHiragana: 'デフォルトひらがな名字',
-              inputNamaeHiragana: 'デフォルトひらがな名前',
-              inputMyojiKatakana: 'デフォルトカタカナ名字',
-              inputNamaeKatakana: 'デフォルトカタカナ名前',
-              inputMainText: defaultInputMainText,
-              outputMainText: ''
-            }
-          },
-          watch: {
-            replaceMyojiKanji(newText, oldText) { this.updateText(); },
-            replaceNamaeKanji(newText, oldText) { this.updateText(); },
-            replaceMyojiHiragana(newText, oldText) { this.updateText(); },
-            replaceNamaeHiragana(newText, oldText) { this.updateText(); },
-            replaceMyojiKatakana(newText, oldText) { this.updateText(); },
-            replaceNamaeKatakana(newText, oldText) { this.updateText(); },
-            replaceDomoriMyojiHiragana(newText, oldText) { this.updateText(); },
-            replaceDomoriNamaeHiragana(newText, oldText) { this.updateText(); },
-            replaceDomoriMyojiKatakana(newText, oldText) { this.updateText(); },
-            replaceDomoriNamaeKatakana(newText, oldText) { this.updateText(); },
-            inputMyojiKanji(newText, oldText) { this.updateText(); },
-            inputNamaeKanji(newText, oldText) { this.updateText(); },
-            inputMyojiHiragana(newText, oldText) { this.updateText(); },
-            inputNamaeHiragana(newText, oldText) { this.updateText(); },
-            inputMyojiKatakana(newText, oldText) { this.updateText(); },
-            inputNamaeKatakana(newText, oldText) { this.updateText(); },
-            inputMainText(newText, oldText) { this.updateText(); }
-          },
-          methods: {
-            updateText(inputText1, inputText2) {
-                let result = this.inputMainText;
-                //どもりから先
-                result = result.replace(new RegExp(this.replaceDomoriMyojiHiragana, 'g'), this.inputMyojiHiragana.substr(0,1));
-                result = result.replace(new RegExp(this.replaceDomoriNamaeHiragana, 'g'), this.inputNamaeHiragana.substr(0,1));
-                result = result.replace(new RegExp(this.replaceDomoriMyojiKatakana, 'g'), this.inputMyojiKatakana.substr(0,1));
-                result = result.replace(new RegExp(this.replaceDomoriNamaeKatakana, 'g'), this.inputNamaeKatakana.substr(0,1));
-                //名字名前
-                result = result.replace(new RegExp(this.replaceMyojiKanji, 'g'), this.inputMyojiKanji);
-                result = result.replace(new RegExp(this.replaceNamaeKanji, 'g'), this.inputNamaeKanji);
-                result = result.replace(new RegExp(this.replaceMyojiHiragana, 'g'), this.inputMyojiHiragana);
-                result = result.replace(new RegExp(this.replaceNamaeHiragana, 'g'), this.inputNamaeHiragana);
-                result = result.replace(new RegExp(this.replaceMyojiKatakana, 'g'), this.inputMyojiKatakana);
-                result = result.replace(new RegExp(this.replaceNamaeKatakana, 'g'), this.inputNamaeKatakana);
-                this.outputMainText = result;
-            }
-          },
-          created() {
-            this.updateText();
-          }
-        }).mount('#app')
-    </script>
+    <script src="../dream-novel.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
