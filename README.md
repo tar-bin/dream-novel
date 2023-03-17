@@ -50,7 +50,7 @@ const defaultNamaeHiragana = 'なまえ';
 + 名字(カタカナ) `{{myojiKatakana}}`
 + 名前(カタカナ) `{{namaeKatakana}}`
 
-また、上記テンプレートにはJavaScriptの関数が利用できる。(substringなど)
+また、上記テンプレートにはJavaScriptの式が利用できる(substringなど)
 
 https://ja.vuejs.org/guide/essentials/template-syntax.html#using-javascript-expressions  
 
