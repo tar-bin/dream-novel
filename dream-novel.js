@@ -1,7 +1,18 @@
+/// version 1.0.0
+/// MIT license
+/// https://github.com/tar-bin/dream-novel/blob/main/LICENSE
+
+/// =====================================
+/// 作品ごとの設定↓ここから
+
 const defaultMyojiKanji = '名字';
 const defaultNamaeKanji = '名前';
 const defaultMyojiHiragana = 'みょうじ';
 const defaultNamaeHiragana = 'なまえ';
+
+/// 作品ごとの設定↑ここまで
+/// =====================================
+/// 以下、実装コードですので触らないでください
 
 const { createApp } = Vue
 
