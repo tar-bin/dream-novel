@@ -1,5 +1,9 @@
-# dream-novel
-夢小説向け名前変換
+# dream-novel.js v1.0.0
+夢小説向け名前変換スクリプト  
+
+こちらは新規ライブラリというよりはVue.js 3系を使った夢小説向けサンプル実装という感じのものです。  
+改変などが必要な場合はVue.js 3系のドキュメントを参照ください。  
+https://ja.vuejs.org/
 
 ## 使用準備
 
@@ -88,3 +92,11 @@ https://ja.vuejs.org/guide/essentials/template-syntax.html#using-javascript-expr
 
 設定例  
 + https://github.com/tar-bin/dream-novel/blob/main/index.html
+
+## 関連ライブラリ
+
++ [Vue.js 3.x :  MIT license](https://ja.vuejs.org/)
+
+## ライセンス
+
+[MIT license](https://github.com/tar-bin/dream-novel/blob/main/LICENSE)
