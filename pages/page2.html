@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <title>夢小説変換サンプル</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">夢小説変換サンプル</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <form class="d-flex">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#configModal">
+                    小説設定
+                </button>
+                </form>
+            </div>
+            </div>
+        </nav>
+        <!-- Modal -->
+        <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="configModalLabel">小説設定</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <p>※データはブラウザのローカルストレージに保存されます。サーバーには送信されません。</p>
+                        </div>
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <label for="inputText1" class="form-label">名字</label>
+                                <input class="form-control" id="inputText1" rows="3" v-model="myojiKanji"></textarea>
+                            </div>
+                            <div class="col">
+                                <label for="inputText2" class="form-label">みょうじ</label>
+                                <input class="form-control" id="inputText2" rows="3" v-model="myojiHiragana"></textarea>
+                            </div>
+                        </div>
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <label for="inputText4" class="form-label">名前</label>
+                                <input class="form-control" id="inputText4" rows="3" v-model="namaeKanji"></textarea>
+                            </div>
+                            <div class="col">
+                                <label for="inputText5" class="form-label">なまえ</label>
+                                <input class="form-control" id="inputText5" rows="3" v-model="namaeHiragana"></textarea>
+                            </div>
+                        </div>
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <label for="slectText5" class="form-label">時間帯</label>
+                                <select class="form-select" id="slectText5" aria-label="時間帯" v-model="jikantai">
+                                    <option>朝</option>
+                                    <option>昼</option>
+                                    <option>夜</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" data-bs-dismiss="modal" @click="saveConfig">保存</button>
+                        <button class="btn btn-outline-secondary" type="button" @click="resetConfig">リセット</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="container">
+            <div class="card border-light">
+                <div class="card-body" style="font-family: 'メイリオ', 'Meiryo', 'Lucida Grande', 'sans-serif';">
+                    <h5 class="card-title">小説タイトル</h5>
+                    <p class="card-text">
+                        <p>※教室のシーン(時間帯別例)</p>
+                        <br>
+                        <div v-if="jikantai === '朝'">
+                            「おはよう、{{myojiKanji}}{{namaeKanji}}」
+                        </div>
+                        <div v-else-if="jikantai === '昼'">
+                            「もうお昼だよ、寝坊したの？　{{myojiKanji}}{{namaeKanji}}」
+                        </div>
+                        <div v-else>
+                            「こんばんは、いい夜だね。{{myojiKanji}}{{namaeKanji}}」
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dream-novel-page2.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
