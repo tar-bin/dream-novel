@@ -88,7 +88,12 @@
                 <div class="card-body" style="font-family: 'メイリオ', 'Meiryo', 'Lucida Grande', 'sans-serif';">
                     <h5 class="card-title">小説タイトル</h5>
                     <p class="card-text">
-                        <p>※教室のシーン(時間帯別例)</p>
+                        <p>※一語づつ分割</p>
+                        <br>
+                        <p>「あなたの名前は何ていうの？」</p>
+                        <p>「そう、{{myojiHiragana.split('').join('・')}}・{{namaeHiragana.split('').join('・')}}っていうのね。憶えたわ」</p>
+                        <br>
+                        <p>※時間帯別例シーン</p>
                         <br>
                         <div v-if="jikantai === '朝'">
                             「おはよう、{{myojiKanji}}{{namaeKanji}}」
