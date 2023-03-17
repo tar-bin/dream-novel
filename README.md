@@ -87,4 +87,4 @@ https://ja.vuejs.org/guide/essentials/template-syntax.html#using-javascript-expr
 + リセット `@click="resetConfig"`
 
 設定例  
-+ https://github.com/tar-bin/dream-novel/blob/main/docs/index.html
++ https://github.com/tar-bin/dream-novel/blob/main/index.html
